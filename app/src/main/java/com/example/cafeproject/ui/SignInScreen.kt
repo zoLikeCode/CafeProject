@@ -1,11 +1,11 @@
-package com.example.cafeproject
+package com.example.cafeproject.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-class LaunchActivity : AppCompatActivity() {
+class SignInScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_launch)
+        setContentView(R.layout.activity_sign_in_screen)
     }
 }
