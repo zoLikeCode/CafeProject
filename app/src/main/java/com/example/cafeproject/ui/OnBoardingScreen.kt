@@ -1,11 +1,33 @@
-package com.example.cafeproject
+package com.example.cafeproject.ui
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import com.example.cafeproject.R
+import com.example.cafeproject.adapters.ViewPagerCustomAdapter
+import com.example.cafeproject.databinding.ActivityLaunchBinding
+import com.example.cafeproject.databinding.ActivityOnBoardingScreenBinding
+import com.example.cafeproject.ui.onboarding.FirstScreen
+import com.example.cafeproject.ui.onboarding.SecondScreen
 
-class OnBoardingScreen : AppCompatActivity() {
+class OnBoardingScreen : FragmentActivity() {
+    lateinit var binding: ActivityOnBoardingScreenBinding
+    lateinit var adapterViewPager: ViewPagerCustomAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_on_boarding_screen)
+        binding = ActivityOnBoardingScreenBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        adapterViewPager = ViewPagerCustomAdapter(this)
+        adapterViewPager.fragments.addAll(listOf(FirstScreen(), SecondScreen()))
+        binding.viewPagerAuth.adapter = adapterViewPager
+    }
+
+    override fun onBackPressed() {
+        return
     }
 }
